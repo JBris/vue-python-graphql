@@ -1,0 +1,4 @@
+server/app/__pycache__
+
+client/node_modules
+client/npm-debug.log

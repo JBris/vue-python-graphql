@@ -1,0 +1,24 @@
+version: "3.5"
+
+services:
+  python:
+    image: "python:${PYTHON_TAG}"
+    container_name: "${PROJECT_NAME}_python"
+    stop_grace_period: 60s
+    restart: always
+    build: 
+      dockerfile: Dockerfile
+      context: ./server
+      args:
+        PYTHON_TAG: $PYTHON_TAG
+    volumes:
+      - ./server:/app
+    command: gunicorn app.app:app -b :8080 --worker-class aiohttp.GunicornWebWorker --reload --access-logfile -
+    ports:
+      - "${PYTHON_PORT}:8080"
+    labels:
+      - "traefik.http.routers.${PROJECT_NAME}_python=Host(`python.${PROJECT_BASE_URL}`)"
+      
+networks:
+  default:
+      name: vue_python
