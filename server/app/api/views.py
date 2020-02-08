@@ -4,11 +4,7 @@ from graphql.execution.executors.asyncio import AsyncioExecutor
 
 from aiohttp_graphql import GraphQLView
 
-class Query(graphene.ObjectType):
-    hello = graphene.String(description='A typical hello world')
-
-    def resolve_hello(self, info):
-        return 'World'
+from app.api.queries import Query
 
 schema = graphene.Schema(query=Query)
 
