@@ -1,8 +1,8 @@
 [Core]
-Name = Git
+Name = GitHub
 Module = github
 
 [Documentation]
 Author = James Bristow
 Version = 1.0
-Description = Plugin system for git searches
+Description = Plugin for GitHub search queries

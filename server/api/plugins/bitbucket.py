@@ -1,5 +1,5 @@
 from api.plugins.igit_plugin import IGitPlugin
 
-class GitHub(IGitPlugin):
+class Bitbucket(IGitPlugin):
     def get_id(self):
-        return "github"
+        return "bitbucket"

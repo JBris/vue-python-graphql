@@ -1,0 +1,8 @@
+[Core]
+Name = Bitbucket
+Module = bitbucket
+
+[Documentation]
+Author = James Bristow
+Version = 1.0
+Description = Plugin for Bitbucket search queries

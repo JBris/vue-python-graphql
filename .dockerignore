@@ -1,6 +1,2 @@
-server/app/__pycache__
-server/app/*/__pycache__
-server/app/*/*/__pycache__
-
-client/node_modules
-client/npm-debug.log
+**/__pycache__
+**/node_modules

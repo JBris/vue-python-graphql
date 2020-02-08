@@ -1,0 +1,8 @@
+[Core]
+Name = GitLab
+Module = gitlab
+
+[Documentation]
+Author = James Bristow
+Version = 1.0
+Description = Plugin for GitLab search queries
