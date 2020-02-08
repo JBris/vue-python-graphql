@@ -6,10 +6,8 @@
 .DS_Store
 
 server/app/__pycache__
-server/app/api/__pycache__
-server/app/api/models/__pycache__
-server/app/api/queries/__pycache__
-
+server/app/*/__pycache__
+server/app/*/*/__pycache__
 
 client/node_modules
 client/npm-debug.log
