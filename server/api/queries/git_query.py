@@ -1,9 +1,10 @@
 import graphene
 
-from app.api.models.git import Git
-from app.api.models.providers import Providers
+from api.models.git import Git
+from api.plugins.providers import Providers
 
 class GitQuery(graphene.ObjectType):
+
     gitRepo = graphene.Field(
         Git,
         provider=graphene.Argument(Providers),
@@ -11,5 +12,5 @@ class GitQuery(graphene.ObjectType):
         description='Git Repo information',
     )
 
-    def resolve_gitRepo(self, info, project, provider) -> Git:
-        return { 'author':'foo', 'project': 'bar', 'provider': 'baz'}
+    async def resolve_gitRepo(self, info, project, provider) -> Git:
+        return { 'author':'foo', 'project': 'bar', 'provider': Providers.GITHUB.value}

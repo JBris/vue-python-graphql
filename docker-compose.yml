@@ -13,7 +13,7 @@ services:
         PYTHON_TAG: $PYTHON_TAG
     volumes:
       - ./server:/app
-    command: gunicorn app.app:app -b :8080 --worker-class aiohttp.GunicornWebWorker --reload --access-logfile -
+    command: gunicorn app:app -b :8080 --worker-class aiohttp.GunicornWebWorker --reload --access-logfile -
     ports:
       - "${PYTHON_PORT}:8080"
     labels:
