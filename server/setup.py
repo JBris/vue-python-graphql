@@ -10,9 +10,8 @@ install_requires = [
     'aiohttp==3.6.2',
     'gunicorn==19.9.0',
     'graphene==2.1.8',
-    # 'aiohttp-graphql==1.0.0',
+    'aiohttp-graphql==1.0.0',
 ]
-
 
 setup(
     name='vue-aiohttp-graphql',

@@ -8,5 +8,4 @@ def init_app(argv=None) -> web.Application:
     init_routes(app)
     return app
 
-
 app = init_app()

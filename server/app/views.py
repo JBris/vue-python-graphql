@@ -1,4 +1,5 @@
 from aiohttp import web
 
 async def index(request):
-    return web.Response(text="Hello, world")
+    res = {"error": "Route not found."}
+    return web.json_response(data=res, status=404)
