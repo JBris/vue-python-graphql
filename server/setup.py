@@ -9,6 +9,7 @@ install_requires = [
     'psycopg2-binary==2.8.4',
     'aiohttp==3.6.2',
     'gunicorn==19.9.0',
+    'graphql-core<3,>=2.3',
     'graphene==2.1.8',
     'aiohttp-graphql==1.0.0',
 ]
