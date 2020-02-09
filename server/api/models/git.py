@@ -1,8 +1,11 @@
 import graphene
 
 class Git(graphene.ObjectType):
-    provider = graphene.String()
-    project = graphene.String()
+    id = graphene.String()
+    repo = graphene.String()
     author = graphene.String()
-    
-    
+    host = graphene.String()
+    htmlUrl = graphene.String()
+    tagsUrl = graphene.String()
+    cloneUrl = graphene.String()
+    description = graphene.String()

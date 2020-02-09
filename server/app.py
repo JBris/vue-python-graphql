@@ -17,7 +17,4 @@ for plugin in manager.getAllPlugins():
 app['search_list'] = search_list
 app['search_map'] = search_map
 
-print(app['search_list'] )
-print(app['search_map'] )
-
 init_routes(app)
