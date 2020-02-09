@@ -5,5 +5,5 @@
 .nfs*
 .DS_Store
 
-**/__pycache__
-**/node_modules
+server/**/__pycache__
+client/**/node_modules
