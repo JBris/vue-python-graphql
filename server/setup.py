@@ -12,7 +12,8 @@ install_requires = [
     'graphql-core<3,>=2.3',
     'graphene==2.1.8',
     'aiohttp-graphql==1.0.0',
-    'yapsy==1.12.2'
+    'yapsy==1.12.2',
+    'beautifulsoup4==4.8.2'
 ]
 
 setup(
