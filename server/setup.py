@@ -9,9 +9,10 @@ install_requires = [
     'psycopg2-binary==2.8.4',
     'aiohttp==3.6.2',
     'gunicorn==19.9.0',
-    'graphql-core<3,>=2.3',
+    'graphql-core<3,>=2.1',
     'graphene==2.1.8',
-    'aiohttp-graphql==1.0.0',
+    #Temporary fix until newest aiohttp-graphql commits are available via PyPI
+    # 'aiohttp-graphql==1.0.0',
     'yapsy==1.12.2',
     'beautifulsoup4==4.8.2'
 ]
