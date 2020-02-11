@@ -18,7 +18,21 @@ services:
       - "${PYTHON_PORT}:8080"
     labels:
       - "traefik.http.routers.${PROJECT_NAME}_python=Host(`python.${PROJECT_BASE_URL}`)"
-      
+  
+  nginx:
+    image: nginx:$NGINX_TAG
+    container_name: "${PROJECT_NAME}_nginx"
+    restart: always
+    depends_on:
+      - python
+    ports:
+      - ${NGINX_PORT}:80
+    volumes:
+      - ./server:/var/www/html
+      - ./services/nginx/conf.d:/etc/nginx/conf.d
+    labels:
+      - "traefik.http.routers.${PROJECT_NAME}_nginx=Host(`nginx.${PROJECT_BASE_URL}`)"
+
 networks:
   default:
       name: vue_python
