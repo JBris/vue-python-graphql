@@ -1,0 +1,36 @@
+{
+  "name": "vue-aiohttp-graphql-client",
+  "version": "1.0.0",
+  "description": "Client-side rendering of the Git search app",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "apollo-cache-inmemory": "^1.6.5",
+    "apollo-client": "^2.6.8",
+    "apollo-link": "^1.2.14",
+    "apollo-link-context": "^1.0.20",
+    "apollo-link-http": "^1.5.17",
+    "core-js": "^3.6.4",
+    "graphql": "^15.0.0",
+    "graphql-tag": "^2.10.3",
+    "vue": "^2.6.11",
+    "vue-apollo": "^3.0.0-alpha.3",
+    "vue-router": "^3.1.6"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.3.0",
+    "@vue/cli-plugin-eslint": "~4.3.0",
+    "@vue/cli-plugin-router": "~4.3.0",
+    "@vue/cli-service": "~4.3.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "author": "James Bristow",
+  "license": "ISC"
+}

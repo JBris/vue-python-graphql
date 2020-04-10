@@ -6,6 +6,11 @@ if [ ! -f ".env" ]; then
     exit 0
 fi
 
+if [ ! -f "client/.env" ]; then 
+    cp "client/.env.example" "client/.env"
+    echo "Creating client/.env..."
+fi
+
 while getopts e opt; do
     case $opt in
         e) 
