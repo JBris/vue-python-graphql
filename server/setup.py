@@ -8,6 +8,7 @@ from setuptools import find_packages, setup
 install_requires = [
     'psycopg2-binary==2.8.4',
     'aiohttp==3.6.2',
+    'aiohttp_cors==0.7.0',
     'gunicorn==19.9.0',
     'graphql-core<3,>=2.1',
     'graphene==2.1.8',
