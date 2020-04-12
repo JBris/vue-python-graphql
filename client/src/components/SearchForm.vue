@@ -3,7 +3,9 @@
     <div>
         Search
         <!-- 1 -->
-        <input type="text" v-model="project" class="form-control" placeholder="search...">
+        <input type="text" v-model="project" class="form-control" placeholder="search projects...">
+        <ProviderList/>
+        <PaginationList @changeSearchPagination="quantity = $event" />
         <div v-if="$apollo.queries.gitRepos.loading">Searching...</div>
         <div v-if="error">{{ error }}</div>
         <div class="row">
@@ -11,11 +13,13 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                     <!-- display the city name and country  -->
-                        {{ repo.repo }}: {{ repo.author }} 
+                        <p>{{ repo.repo }}</p>
+                        <p>{{ repo.author }}</p>
                     </div>
                     <div class="panel-body">
                     <!-- display the latitude and longitude of the city  -->
-                        <p>{{ repo.htmlUrl }},{{ repo.description }}.</p>
+                        <p>{{ repo.htmlUrl }}</p>
+                        <p>{{ repo.description }}</p>
                     </div>
                 </div>
             </div>
@@ -28,23 +32,29 @@
 
 <script>
   import { SEARCH_QUERY } from '@/graphql'
+  import ProviderList from '@/components/ProviderList.vue'
+  import PaginationList from '@/components/PaginationList.vue'
 
   export default {
-    name: 'Search',
+    name: 'SearchForm',
     data () {
       return {
         gitRepos: [],
-        provider: 'GITHUB',
         project: '',
         error: null,
+        quantity: 25,
       }
+    },
+    components:{
+      ProviderList,
+      PaginationList,
     },
     apollo: {
       gitRepos: {
         query: SEARCH_QUERY,
         variables () {
           return {
-            provider: this.provider,
+            provider: this.$store.state.provider,
             project: this.project,
             quantity: 50,
           }
