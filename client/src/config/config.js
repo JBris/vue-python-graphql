@@ -1,7 +1,7 @@
 const NODE_ENV = process.env.NODE_ENV || "development";
 
 const defaults = {
-    HOST: `${process.env.PYTHON_HOST}:${process.env.PYTHON_PORT}` || "http://localhost:8080"
+    HOST: (process.env.VUE_APP_PYTHON_HOST && process.env.VUE_APP_PYTHON_PORT) ?`${process.env.VUE_APP_PYTHON_HOST}:${process.env.VUE_APP_PYTHON_PORT}` : "http://localhost:8080"
 };
 
 let config = {};
