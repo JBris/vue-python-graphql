@@ -1,25 +1,36 @@
 <template>
-    <div id="app">
-        <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
-            <div class="container">
-                <div class="navbar-brand">
-                    <router-link class="navbar-item" to="/signup">Blog App</router-link>
-
-                    <button class="button navbar-burger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
-            </div>
-        </nav>
-        <router-view/>
-    </div>
-
+  <div id="app">
+    <Header/>
+    <SearchForm/>
+  </div>
 </template>
 
 <script>
+import Header from './components/layout/Header';
+import SearchForm from './components/SearchForm';
+// import SearchResults from './components/SearchResults';
+// import Pagination from './components/Pagination';
+
+    //   <SearchResults
+    //   v-if="videos.length > 0"
+    //   v-bind:videos="videos"
+    //   v-bind:reformattedSearchString="reformattedSearchString"
+    // />
+    // <Pagination
+    //   v-if="videos.length > 0"
+    //   v-bind:prevPageToken="api.prevPageToken"
+    //   v-bind:nextPageToken="api.nextPageToken"
+    //   v-on:prev-page="prevPage"
+    //   v-on:next-page="nextPage"
+    // />
+
 export default {
-    name: 'app'
+  name: 'app',
+  components: {
+    Header,
+    SearchForm,
+    // SearchResults,
+    // Pagination
+  },
 }
 </script>
