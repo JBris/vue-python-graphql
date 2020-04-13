@@ -1,7 +1,7 @@
 import graphene
 
 class Git(graphene.ObjectType):
-    id = graphene.String()
+    id = graphene.Int()
     repo = graphene.String()
     author = graphene.String()
     host = graphene.String()

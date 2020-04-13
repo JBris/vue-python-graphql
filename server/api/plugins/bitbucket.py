@@ -53,13 +53,14 @@ class Bitbucket(IGitPlugin):
         responses = await asyncio.gather(*tasks, return_exceptions=True)
         self.session.close()
 
+        i = 0
         for res in responses:        
             res_body = await res.json()
             if res.status != 200:
                 raise GraphQLError("Error: Response code: ", (res.status), " - Message: " + res_body['error']['message'])
             else:
                 search_result=OrderedDict()
-                search_result['id'] = res_body['name']
+                search_result['id'] = i
                 search_result['repo'] = res_body['name']
                 search_result['author'] = res_body['owner'].get('nickname')
                 if search_result['author'] is None : search_result['author'] = res_body['owner'].get('username') 
@@ -69,5 +70,6 @@ class Bitbucket(IGitPlugin):
                 search_result['tagsUrl'] = res_body['links']['tags']['href']
                 search_result['cloneUrl'] = res_body['links']['clone'][0]['href']
                 git_collection['items'].append(search_result)
+                i += 1
 
         return git_collection

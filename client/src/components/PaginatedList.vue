@@ -2,10 +2,10 @@
   <div class="paginated-list" @resetPageNumber="pageNumber = $event">
       <div class="row">
         <ListItem class="col-md-3" 
-          v-for="(repo, key, index) in paginatedData"   
+          v-for="repo in paginatedData"   
           v-bind:repo="repo" 
-          v-bind:key="index" 
-          v-bind:index="index"
+          v-bind:key="repo.id" 
+          v-bind:index="repo.id"
         />
       </div>
     <br/>

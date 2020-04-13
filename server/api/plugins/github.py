@@ -27,9 +27,10 @@ class GitHub(IGitPlugin):
             raise GraphQLError("Error: Response code: ", (res.status), " - Message: " + res_body['message'])
         else:
             git_collection = { "items": [] }
+            i = 0
             for item in res_body['items']:
                 search_result=OrderedDict()
-                search_result['id'] = item['name']
+                search_result['id'] = i
                 search_result['repo'] = item['name']
                 search_result['author'] = item['owner']['login']
                 search_result['host'] = "github.com"
@@ -38,5 +39,6 @@ class GitHub(IGitPlugin):
                 search_result['tagsUrl'] = item['tags_url']
                 search_result['cloneUrl'] = item['clone_url']
                 git_collection['items'].append(search_result)
+                i += 1
 
             return git_collection

@@ -21,7 +21,9 @@ const httpLink = new HttpLink({
 // create the apollo client
 const apolloClient = new ApolloClient({
   link: ApolloLink.from([errorLink, httpLink]),
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    dataIdFromObject: o => o['id']
+  }),
 })
 
 // install the vue plugin
