@@ -1,8 +1,6 @@
 <template>
   <div>
     <div>
-        Search
-        <!-- 1 -->
         <input type="text" v-model="project" class="form-control" placeholder="search projects...">
         <ProviderSelect/>
         <PaginationSelect @changeSearchPagination="size = $event" />
