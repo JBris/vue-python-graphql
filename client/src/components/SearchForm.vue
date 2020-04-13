@@ -23,6 +23,7 @@
   import ProviderSelect from '@/components/ProviderSelect.vue'
   import PaginationSelect from '@/components/PaginationSelect.vue'
   import PaginatedList from '@/components/PaginatedList.vue'
+  
   export default {
     name: 'SearchForm',
     data () {

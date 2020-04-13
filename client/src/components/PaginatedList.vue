@@ -1,18 +1,12 @@
 <template>
   <div class="paginated-list" @resetPageNumber="pageNumber = $event">
       <div class="row">
-          <div class="col-md-3" v-for="(repo, key, index) in paginatedData" v-bind:key="index">
-              <div class="panel panel-default">
-                  <div class="panel-heading">
-                      <p>{{ repo.repo }}</p>
-                      <p>{{ repo.author }}</p>
-                  </div>
-                  <div class="panel-body">
-                      <p>{{ repo.htmlUrl }}</p>
-                      <p>{{ repo.description }}</p>
-                  </div>
-              </div>
-          </div>
+        <ListItem class="col-md-3" 
+          v-for="(repo, key, index) in paginatedData"   
+          v-bind:repo="repo" 
+          v-bind:key="index" 
+          v-bind:index="index"
+        />
       </div>
     <br/>
     <p>Page {{ pageNumber + 1 }}</p>
@@ -26,8 +20,18 @@
 </template>
 
 <script>
+  import ListItem from '@/components/ListItem.vue'
+
   export default {
     name: 'PaginatedList',
+    components:{
+      ListItem,
+    },
+    data() {
+      return {
+        pageNumber: 0
+      }
+    },
     props:{
       list:{
         type:Array,
@@ -37,11 +41,6 @@
         type:Number,
         required:false,
         default: 10
-      },
-      pageNumber:{
-        type:Number,
-        required:false,
-        default: 0
       },
     },
     methods: {
