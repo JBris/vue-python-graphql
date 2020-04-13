@@ -1,12 +1,21 @@
 <template>
-  <div>
-    <ul>
-      <li v-for="p in paginatedData" v-bind:key="p.suffix">
-        {{p.first}} 
-        {{p.last}}  
-        {{p.suffix}}
-      </li>
-    </ul>
+  <div class="paginated-list" @resetPageNumber="pageNumber = $event">
+      <div class="row">
+          <div class="col-md-3" v-for="(repo, key, index) in paginatedData" v-bind:key="index">
+              <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <p>{{ repo.repo }}</p>
+                      <p>{{ repo.author }}</p>
+                  </div>
+                  <div class="panel-body">
+                      <p>{{ repo.htmlUrl }}</p>
+                      <p>{{ repo.description }}</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+    <br/>
+    <p>Page {{ pageNumber + 1 }}</p>
     <button :disabled="pageNumber === 0" @click="prevPage">
       Previous
     </button>
@@ -19,11 +28,6 @@
 <script>
   export default {
     name: 'PaginatedList',
-    data () {
-      return {
-        pageNumber: 0
-      }
-    },
     props:{
       list:{
         type:Array,
@@ -32,7 +36,12 @@
       size:{
         type:Number,
         required:false,
-        default: 1
+        default: 10
+      },
+      pageNumber:{
+        type:Number,
+        required:false,
+        default: 0
       },
     },
     methods: {
@@ -47,10 +56,13 @@
       pageCount() {
         let l = this.list.length,
             s = this.size;
-        return Math.ceil(l/s);
+        return Math.floor(l/s);
       },
       paginatedData() {
-        const start = this.pageNumber * this.size;
+        let start = this.pageNumber * this.size;
+        const len = this.list.length -1;
+        if (start < 0) { start = 0; }
+        if (start > (len - this.size) ) { start = len - this.size; }
         const end = start + this.size;     
         return this.list.slice(start, end);
       }

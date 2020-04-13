@@ -1,6 +1,6 @@
 <template>
     <div class="pagination-list">
-        <select v-model="quantity" @change="changeSearchPagination($event)">
+        <select v-model="size" @change="changeSearchPagination($event)">
           <option disabled value="">Results per page...</option>
           <option v-for="item in items" v-bind:key="item" v-bind:value="item">
             {{ item }}
@@ -15,12 +15,13 @@
     data () {
       return {
         items: [10, 25, 50, 100],
-        quantity: 25,
+        size: 10,
       }
     },
     methods: {
         changeSearchPagination(event) {
-            this.$emit('changeSearchPagination', event.target.value)
+            const size = parseInt(event.target.value);
+            this.$emit('changeSearchPagination', size)
         }
     }
   }

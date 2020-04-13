@@ -5,27 +5,16 @@
         <!-- 1 -->
         <input type="text" v-model="project" class="form-control" placeholder="search projects...">
         <ProviderSelect/>
-        <PaginationSelect @changeSearchPagination="quantity = $event" />
+        <PaginationSelect @changeSearchPagination="size = $event" />
         <div v-if="$apollo.queries.gitRepos.loading">Searching...</div>
         <div v-if="error">{{ error }}</div>
-        <PaginatedList :list="[]" />
-        <div class="row">
-            <div class="col-md-3" v-for="repo in gitRepoResults" v-bind:key="`${repo.id}-${repo.author}`">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                    <!-- display the city name and country  -->
-                        <p>{{ repo.repo }}</p>
-                        <p>{{ repo.author }}</p>
-                    </div>
-                    <div class="panel-body">
-                    <!-- display the latitude and longitude of the city  -->
-                        <p>{{ repo.htmlUrl }}</p>
-                        <p>{{ repo.description }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <br/>
+        <PaginatedList 
+          v-if="gitRepoResults.length > 0" 
+          :list="gitRepoResults" 
+          :size="size" 
+          :pageNumber="pageNumber" 
+          @resetPageNumber="pageNumber = $event" />
     </div>
   </div>
   
@@ -43,7 +32,8 @@
       return {
         project: '',
         error: null,
-        quantity: 25,
+        size: 10,
+        pageNumber: 0,
       }
     },
     components:{
@@ -62,7 +52,8 @@
           }
         },
         result ({ data }) {
-            this.gitRepoResults = data.gitRepos.items;
+            this.$emit('resetPageNumber', 0);
+            return this.gitRepoResults = data.gitRepos.items;
         },
         options: () => ({ errorPolicy: 'all' }),
         skip () {
