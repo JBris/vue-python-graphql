@@ -46,7 +46,7 @@
           return {
             provider: this.$store.state.provider,
             project: this.project,
-            quantity: 50,
+            quantity: 100,
           }
         },
         result ({ data }) {

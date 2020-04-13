@@ -62,7 +62,7 @@
         let start = this.pageNumber * this.size;
         const len = this.list.length -1;
         if (start < 0) { start = 0; }
-        if (start > (len - this.size) ) { start = len - this.size; }
+        if (start > len ) { start = len - this.size; }
         const end = start + this.size;     
         return this.list.slice(start, end);
       }
