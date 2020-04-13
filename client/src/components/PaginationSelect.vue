@@ -14,7 +14,7 @@
     name: 'PaginationList',
     data () {
       return {
-        items: [10, 25, 50, 100],
+        items: [10, 25, 50],
         size: 10,
       }
     },

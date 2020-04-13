@@ -23,7 +23,6 @@
   import ProviderSelect from '@/components/ProviderSelect.vue'
   import PaginationSelect from '@/components/PaginationSelect.vue'
   import PaginatedList from '@/components/PaginatedList.vue'
-
   export default {
     name: 'SearchForm',
     data () {
@@ -46,7 +45,7 @@
           return {
             provider: this.$store.state.provider,
             project: this.project,
-            quantity: 100,
+            quantity: 50,
           }
         },
         result ({ data }) {
