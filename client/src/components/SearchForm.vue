@@ -4,12 +4,13 @@
         Search
         <!-- 1 -->
         <input type="text" v-model="project" class="form-control" placeholder="search projects...">
-        <ProviderList/>
-        <PaginationList @changeSearchPagination="quantity = $event" />
+        <ProviderSelect/>
+        <PaginationSelect @changeSearchPagination="quantity = $event" />
         <div v-if="$apollo.queries.gitRepos.loading">Searching...</div>
         <div v-if="error">{{ error }}</div>
+        <PaginatedList :list="[]" />
         <div class="row">
-            <div class="col-md-3" v-for="repo in gitRepos" v-bind:key="`${repo.id}-${repo.author}`">
+            <div class="col-md-3" v-for="repo in gitRepoResults" v-bind:key="`${repo.id}-${repo.author}`">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                     <!-- display the city name and country  -->
@@ -32,22 +33,23 @@
 
 <script>
   import { SEARCH_QUERY } from '@/graphql'
-  import ProviderList from '@/components/ProviderList.vue'
-  import PaginationList from '@/components/PaginationList.vue'
+  import ProviderSelect from '@/components/ProviderSelect.vue'
+  import PaginationSelect from '@/components/PaginationSelect.vue'
+  import PaginatedList from '@/components/PaginatedList.vue'
 
   export default {
     name: 'SearchForm',
     data () {
       return {
-        gitRepos: [],
         project: '',
         error: null,
         quantity: 25,
       }
     },
     components:{
-      ProviderList,
-      PaginationList,
+      ProviderSelect,
+      PaginationSelect,
+      PaginatedList,
     },
     apollo: {
       gitRepos: {
@@ -59,8 +61,8 @@
             quantity: 50,
           }
         },
-        update (data) {
-            return data.gitRepos.items;
+        result ({ data }) {
+            this.gitRepoResults = data.gitRepos.items;
         },
         options: () => ({ errorPolicy: 'all' }),
         skip () {
@@ -71,6 +73,17 @@
         },
         debounce: 300, 
         errorPolicy: 'all',
+        manual: true,
+      }
+    },
+    computed: {
+      gitRepoResults: {
+        get () {
+          return this.$store.state.gitRepos
+        },
+        set (value) {
+          this.$store.commit('setGitRepos', value)
+        }
       }
     }
   }
