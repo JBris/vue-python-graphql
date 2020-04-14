@@ -26,12 +26,6 @@
     components:{
       ListItem,
     },
-    props:{
-      list:{
-        type:Array,
-        required:true
-      },
-    },
     methods: {
       nextPage() {
         this.$emit('scroll_to_top');
@@ -43,6 +37,9 @@
       },
     },
     computed: {
+      list() {
+        return this.$store.state.gitRepos
+      },
       pageCount() {
         let l = this.list.length,
             s = this.size;

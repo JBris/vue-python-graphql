@@ -17,7 +17,6 @@
         </div>
         <PaginatedList 
           v-if="gitRepoResults.length > 0" 
-          :list="gitRepoResults" 
           v-on:scroll_to_top="scrollToTop"
         />
     </div>
@@ -55,6 +54,9 @@
             project: this.project,
             quantity: 50,
           }
+        },
+        watchLoading (isLoading) {
+          if(isLoading) { this.clearResults(); }
         },
         result (res) {
             if (!res.data) { return; }
