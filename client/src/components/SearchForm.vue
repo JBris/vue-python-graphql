@@ -10,6 +10,7 @@
         <PaginatedList 
           v-if="gitRepoResults.length > 0" 
           :list="gitRepoResults" 
+          v-on:scroll_to_top="scrollToTop"
         />
     </div>
   </div>
@@ -70,6 +71,11 @@
           this.$store.commit('setGitRepos', value)
         }
       }
-    }
+    },
+    methods: {
+      scrollToTop() {
+        this.$emit('scroll_to_top');
+      },
+    },
   }
 </script>

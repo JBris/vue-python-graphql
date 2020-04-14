@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div id="app" ref="app">
     <Header/>
-    <SearchForm/>
+    <SearchForm v-on:scroll_to_top="scrollToTop" />
   </div>
 </template>
 
@@ -11,9 +11,15 @@ import SearchForm from '@/components/SearchForm';
 
 export default {
   name: 'app',
+  ele: '#app',
   components: {
     Header,
     SearchForm,
+  },
+  methods: {
+    scrollToTop() {
+      this.$refs.app.scrollIntoView()
+    },
   },
 }
 </script>

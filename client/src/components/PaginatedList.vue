@@ -35,10 +35,12 @@
     },
     methods: {
       nextPage() {
-        this.$store.commit('incrementSearchPageNumber')
+        this.$emit('scroll_to_top');
+        this.$store.commit('incrementSearchPageNumber');
       },
       prevPage(){
-        this.$store.commit('decrementSearchPageNumber')
+        this.$emit('scroll_to_top');
+        this.$store.commit('decrementSearchPageNumber');
       },
     },
     computed: {
