@@ -1,9 +1,8 @@
 <template>
     <div> 
-        <div> 
-            <img src="@/assets/logo.png" width="25px">
-            Git Search
-        </div>
+        <header>
+            <h2>Git Search</h2>
+        </header>
     </div>
 </template>
 <script>
