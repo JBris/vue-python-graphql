@@ -1,7 +1,7 @@
 <template>
   <div class="paginated-list" >
-      <div class="row">
-        <ListItem class="col-md-3" 
+      <div class="row">   
+        <ListItem class="columns is-vcentered has-text-centered"
           v-for="repo in paginatedData"   
           v-bind:repo="repo" 
           v-bind:key="repo.id" 

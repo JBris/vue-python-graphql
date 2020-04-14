@@ -48,6 +48,7 @@
     apollo: {
       gitRepos: {
         query: SEARCH_QUERY,
+        fetchPolicy: 'cache-and-network',
         variables () {
           return {
             provider: this.$store.state.provider,
@@ -73,7 +74,7 @@
         error(error) {
             this.error = error.message;
         },
-        debounce: 300, 
+        debounce: 500, 
         errorPolicy: 'all',
         manual: true,
       }
