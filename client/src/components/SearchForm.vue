@@ -1,10 +1,16 @@
 <template>
   <div>
     <div>
-        <input type="text" v-model="project" class="form-control" placeholder="search projects...">
-        <ProviderSelect/>
+        <input 
+          type="text" 
+          v-model="project" 
+          class="form-control" 
+          placeholder="Search projects..."
+          v-on:keyup="clearResults"
+        >
+        <ProviderSelect v-on:change_provider="clearResults"/>
         <PaginationSelect/>
-        <div v-if="$apollo.queries.gitRepos.loading">Searching...</div>
+        <div v-if="isSearching === true">Searching...</div>
         <div v-if="error">{{ error }}</div>
         <div class="results-message">
           <p>{{ resultsMessage }}</p>
@@ -32,6 +38,7 @@
         project: '',
         error: null,
         resultsMessage: "",
+        isSearching: false,
       }
     },
     components:{
@@ -49,10 +56,12 @@
             quantity: 50,
           }
         },
-        result ({ data }) {
+        result (res) {
+            if (!res.data) { return; }
+            this.isSearching = false;
             this.$store.commit('resetSearchPageNumber');
-            this.gitRepoResults = data.gitRepos.items;
-            const length = data.gitRepos.items.length;
+            this.gitRepoResults = res.data.gitRepos.items;
+            const length = res.data.gitRepos.items.length;
             this.resultsMessage = `${length} results found.`;
         },
         options: () => ({ errorPolicy: 'all' }),
@@ -80,6 +89,12 @@
     methods: {
       scrollToTop() {
         this.$emit('scroll_to_top');
+      },
+      clearResults() {
+        this.resultsMessage = "";
+        this.error = "";
+        this.gitRepoResults = [];
+        if(this.project) { this.isSearching = true; } 
       },
     },
   }

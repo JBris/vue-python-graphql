@@ -1,6 +1,6 @@
 <template>
     <div class="provider-list">
-        <select v-model="provider">
+        <select v-model="provider" @change="changeProvider()">
           <option disabled value="">Select platform...</option>
           <option v-for="provider in providers" v-bind:key="provider.value" v-bind:value="provider.value">
             {{ provider.text }}
@@ -30,6 +30,11 @@
           this.$store.commit('setProvider', value)
         }
       }
+    },
+    methods: {
+        changeProvider() {
+          this.$emit('change_provider');
+        }
     }
   }
 </script>
