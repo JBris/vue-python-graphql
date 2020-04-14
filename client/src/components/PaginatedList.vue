@@ -1,35 +1,37 @@
 <template>
-  <div class="paginated-list" >
-      <div class="row">   
-        <ListItem class="columns is-vcentered has-text-centered"
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-half is-7">
+        <ListItem class="columns"
           v-for="repo in paginatedData"   
           v-bind:repo="repo" 
           v-bind:key="repo.id" 
           v-bind:index="repo.id"
         />
+      <div class="level bottom-level">
+        <div class="level-item is-6">
+          <button 
+            :disabled="pageNumber === 0" 
+            class="button is-primary is-normal is-rounded pagination-button"
+            @click="prevPage"
+          >
+            <p>Previous</p>
+          </button>
+        </div>
+        <div class="level-item is-5">
+          <p>Page {{ pageNumber + 1 }}</p>
+        </div>
+        <div class="level-item is-5">
+          <button 
+            :disabled="pageNumber >= pageCount -1" 
+            class="button is-primary is-normal is-rounded pagination-button"
+            @click="nextPage"
+          >
+            <p>Next</p>
+          </button>
+        </div>
+        </div>
       </div>    
-    <div class="level bottom-level">
-      <div class="level-item is-5">
-        <button 
-          :disabled="pageNumber === 0" 
-          class="button is-primary is-normal is-rounded pagination-button"
-          @click="prevPage"
-        >
-          <p>Previous</p>
-        </button>
-      </div>
-      <div class="level-item is-5">
-        <p>Page {{ pageNumber + 1 }}</p>
-      </div>
-      <div class="level-item is-5">
-        <button 
-          :disabled="pageNumber >= pageCount -1" 
-          class="button is-primary is-normal is-rounded pagination-button"
-          @click="nextPage"
-        >
-          <p>Next</p>
-        </button>
-      </div>
     </div>
   </div>
 </template>
