@@ -1,12 +1,16 @@
 <template>
-    <div class="select is-primary is-normal">
-        <select v-model="provider" @change="changeProvider()">
-          <option disabled value="">Select platform...</option>
-          <option v-for="provider in providers" v-bind:key="provider.value" v-bind:value="provider.value">
-            {{ provider.text }}
-          </option>
-        </select>
+  <div class="field">
+    <label class="label">Platform</label>
+    <div class="control">
+      <div class="select is-primary is-normal">
+          <select v-model="provider" @change="changeProvider()">
+            <option v-for="provider in providers" v-bind:key="provider.value" v-bind:value="provider.value">
+              {{ provider.text }}
+            </option>
+          </select>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>

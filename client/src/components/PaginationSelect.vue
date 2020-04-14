@@ -1,12 +1,16 @@
 <template>
-    <div class="select is-primary is-normal">
+  <div class="field">
+    <label class="label">Results per page</label>
+    <div class="control">
+      <div class="select is-primary is-normal">
         <select v-model="size" @change="changeSearchPagination($event)" >
-          <option disabled value="">Results per page...</option>
           <option v-for="item in items" v-bind:key="item" v-bind:value="item">
             {{ item }}
           </option>
         </select>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>

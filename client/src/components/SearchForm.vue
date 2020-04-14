@@ -1,30 +1,53 @@
 <template>
-  <div>
     <div>
-        <input 
-          type="text" 
-          v-model="project" 
-          class="input is-normal is-primary is-rounded" 
-          placeholder="Search projects..."
-          v-on:keyup="clearResults"
-        >
-        <ProviderSelect v-on:change_provider="clearResults"/>
-        <PaginationSelect/>
-        <div v-if="isSearching === true">
-          Searching...
-          <progress class="progress is-small is-primary" max="100">25%</progress>
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-half">
+            <div class="field search-input is-5">
+            <label class="label">Project</label>
+            <div class="control">
+              <input 
+                type="text" 
+                v-model="project" 
+                class="input is-normal is-primary is-rounded" 
+                placeholder="Search projects..."
+                v-on:keyup="clearResults"
+              >
+            </div>
+          </div> 
+
+          <div class="level options-level">
+            <div class="level-left">
+              <ProviderSelect v-on:change_provider="clearResults"/>
+            </div>
+            <div class="level-right">
+              <PaginationSelect/>
+            </div>
+          </div>
+          
+          <div class="container has-text-centered search-result-messages">
+            <div v-if="isSearching === true">
+              Searching...
+              <progress class="progress is-small is-primary search-progress-bar" max="100">25%</progress>
+            </div>
+            <div v-if="error">{{ error }}</div>
+            <div class="results-message">
+              <p>{{ resultsMessage }}</p>
+            </div>
+          </div>
+
         </div>
-        <div v-if="error">{{ error }}</div>
-        <div class="results-message">
-          <p>{{ resultsMessage }}</p>
-        </div>
-        <PaginatedList 
-          v-if="gitRepoResults.length > 0" 
-          v-on:scroll_to_top="scrollToTop"
-        />
+      </div>
     </div>
+        
+    <div class="container">
+      <PaginatedList 
+        v-if="gitRepoResults.length > 0" 
+        v-on:scroll_to_top="scrollToTop"
+      />
+    </div>
+
   </div>
-  
 </template>
 
 <script>
@@ -105,3 +128,19 @@
     },
   }
 </script>
+
+<style scoped>
+  .search-input {
+     margin: 0.5em;   
+     width: 50vw;
+  }
+  .options-level {
+    margin: 3em;
+  }
+  .search-result-messages {
+    margin: 2em;
+  }
+  .search-progress-bar{
+    width: 48vw;
+  }
+</style>
