@@ -1,1 +1,11 @@
 @import "~bulma";
+
+#app {
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin-left: 2.5vw;
+    margin-right: 2.5vw;
+    margin-top: 2.5vh;
+    margin-bottom: 2.5vh;
+}
