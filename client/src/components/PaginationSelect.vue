@@ -20,8 +20,9 @@
     },
     methods: {
         changeSearchPagination(event) {
-            const size = parseInt(event.target.value);
-            this.$emit('changeSearchPagination', size)
+          const size = parseInt(event.target.value);
+          this.$store.commit('setSearchListSize', size);
+          this.$store.commit('resetSearchPageNumber')
         }
     }
   }

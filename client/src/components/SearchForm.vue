@@ -3,16 +3,14 @@
     <div>
         <input type="text" v-model="project" class="form-control" placeholder="search projects...">
         <ProviderSelect/>
-        <PaginationSelect @changeSearchPagination="size = $event" />
+        <PaginationSelect/>
         <div v-if="$apollo.queries.gitRepos.loading">Searching...</div>
         <div v-if="error">{{ error }}</div>
         <br/>
         <PaginatedList 
           v-if="gitRepoResults.length > 0" 
           :list="gitRepoResults" 
-          :size="size" 
-          :pageNumber="pageNumber" 
-          @resetPageNumber="pageNumber = $event" />
+        />
     </div>
   </div>
   
@@ -30,8 +28,6 @@
       return {
         project: '',
         error: null,
-        size: 10,
-        pageNumber: 0,
       }
     },
     components:{
@@ -50,7 +46,7 @@
           }
         },
         result ({ data }) {
-            this.$emit('resetPageNumber', 0);
+            this.$store.commit('resetSearchPageNumber')
             return this.gitRepoResults = data.gitRepos.items;
         },
         options: () => ({ errorPolicy: 'all' }),

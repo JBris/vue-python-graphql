@@ -1,5 +1,5 @@
 <template>
-  <div class="paginated-list" @resetPageNumber="pageNumber = $event">
+  <div class="paginated-list" >
       <div class="row">
         <ListItem class="col-md-3" 
           v-for="repo in paginatedData"   
@@ -27,29 +27,19 @@
     components:{
       ListItem,
     },
-    data() {
-      return {
-        pageNumber: 0
-      }
-    },
     props:{
       list:{
         type:Array,
         required:true
       },
-      size:{
-        type:Number,
-        required:false,
-        default: 10
-      },
     },
     methods: {
       nextPage() {
-         this.pageNumber++;
+        this.$store.commit('incrementSearchPageNumber')
       },
       prevPage(){
-        this.pageNumber--;
-      }
+        this.$store.commit('decrementSearchPageNumber')
+      },
     },
     computed: {
       pageCount() {
@@ -64,7 +54,13 @@
         if (start > len ) { start = len - this.size; }
         const end = start + this.size;     
         return this.list.slice(start, end);
-      }
+      },
+      size() {
+        return this.$store.state.searchListSize
+      },
+      pageNumber() {
+        return this.$store.state.searchPageNumber
+      },
     }
   };
 </script>
