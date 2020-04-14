@@ -6,12 +6,14 @@
         <PaginationSelect/>
         <div v-if="$apollo.queries.gitRepos.loading">Searching...</div>
         <div v-if="error">{{ error }}</div>
-        <br/>
         <PaginatedList 
           v-if="gitRepoResults.length > 0" 
           :list="gitRepoResults" 
           v-on:scroll_to_top="scrollToTop"
         />
+        <div v-else>
+          <p>No results found.</p>
+        </div>
     </div>
   </div>
   

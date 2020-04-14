@@ -8,7 +8,6 @@
           v-bind:index="repo.id"
         />
       </div>
-    <br/>
     <p>Page {{ pageNumber + 1 }}</p>
     <button :disabled="pageNumber === 0" @click="prevPage">
       Previous
