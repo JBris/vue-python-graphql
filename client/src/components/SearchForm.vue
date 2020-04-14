@@ -6,14 +6,14 @@
         <PaginationSelect/>
         <div v-if="$apollo.queries.gitRepos.loading">Searching...</div>
         <div v-if="error">{{ error }}</div>
+        <div class="results-message">
+          <p>{{ resultsMessage }}</p>
+        </div>
         <PaginatedList 
           v-if="gitRepoResults.length > 0" 
           :list="gitRepoResults" 
           v-on:scroll_to_top="scrollToTop"
         />
-        <div v-else>
-          <p>No results found.</p>
-        </div>
     </div>
   </div>
   
@@ -31,6 +31,7 @@
       return {
         project: '',
         error: null,
+        resultsMessage: "",
       }
     },
     components:{
@@ -49,8 +50,10 @@
           }
         },
         result ({ data }) {
-            this.$store.commit('resetSearchPageNumber')
-            return this.gitRepoResults = data.gitRepos.items;
+            this.$store.commit('resetSearchPageNumber');
+            this.gitRepoResults = data.gitRepos.items;
+            const length = data.gitRepos.items.length;
+            this.resultsMessage = `${length} results found.`;
         },
         options: () => ({ errorPolicy: 'all' }),
         skip () {
