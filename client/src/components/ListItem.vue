@@ -30,9 +30,9 @@
 
 <style scoped>
   .list-item-details {
-    margin-left: 5em;
-    margin-right: 6em;
-    margin-bottom: 2em;
-    margin-top: 0.5em;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 5%;
+    margin-top: 5%;
   }
 </style>
