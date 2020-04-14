@@ -132,7 +132,7 @@
 <style scoped>
   .search-input {
      margin: 0.5em;   
-     width: 50vw;
+     width: 100%;
   }
   .options-level {
     margin: 3em;
@@ -141,6 +141,6 @@
     margin: 2em;
   }
   .search-progress-bar{
-    width: 48vw;
+    width: 105%;
   }
 </style>
