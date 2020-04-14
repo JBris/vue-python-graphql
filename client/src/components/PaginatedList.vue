@@ -9,11 +9,19 @@
         />
       </div>
     <p>Page {{ pageNumber + 1 }}</p>
-    <button :disabled="pageNumber === 0" @click="prevPage">
-      Previous
+    <button 
+      :disabled="pageNumber === 0" 
+      class="button is-primary is-normal is-rounded pagination-button"
+      @click="prevPage"
+    >
+      <p>Previous</p>
     </button>
-    <button :disabled="pageNumber >= pageCount -1" @click="nextPage">
-      Next
+    <button 
+      :disabled="pageNumber >= pageCount -1" 
+      class="button is-primary is-normal is-rounded pagination-button"
+      @click="nextPage"
+    >
+      <p>Next</p>
     </button>
   </div>
 </template>
@@ -64,6 +72,10 @@
 </script>
 
 <style scoped>
+  .pagination-button {
+      width: 10%;
+      display: inline-block;
+  }
   .page-link {
     box-shadow: none !important;
   }

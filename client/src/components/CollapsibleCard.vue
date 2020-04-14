@@ -57,11 +57,25 @@ export default {
 };
 </script>
 
-<style scoped>
-.card-header-icon.button {
-  margin: 0.75rem;
+<style scoped lang="scss">
+$turquoise: hsl(171, 100%, 41%);
+
+.card-header {
+  box-shadow: 0px 0px 0px 8px rgba(0,0,0,0); 
+}
+.card-header-title{
+  text-align: left;
+  text-decoration: underline;
+  font-weight: bold;
 }
 .card {
-  margin: 0.75rem;
+  margin: 0.05rem;
+  width: 200%;
+  box-shadow: 0.10em 0.10em 5px grey;
+  border-radius: 1.5em;
+  border: 0.05em solid $turquoise;
+}
+.card-content {
+  text-align: left
 }
 </style>

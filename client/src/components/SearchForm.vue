@@ -4,13 +4,16 @@
         <input 
           type="text" 
           v-model="project" 
-          class="form-control" 
+          class="input is-normal is-primary is-rounded" 
           placeholder="Search projects..."
           v-on:keyup="clearResults"
         >
         <ProviderSelect v-on:change_provider="clearResults"/>
         <PaginationSelect/>
-        <div v-if="isSearching === true">Searching...</div>
+        <div v-if="isSearching === true">
+          Searching...
+          <progress class="progress is-small is-primary" max="100">25%</progress>
+        </div>
         <div v-if="error">{{ error }}</div>
         <div class="results-message">
           <p>{{ resultsMessage }}</p>

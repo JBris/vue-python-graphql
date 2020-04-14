@@ -1,4 +1,3 @@
-import 'bulma/css/bulma.css'
 import { ApolloClient } from 'apollo-client'
 import { ApolloLink } from 'apollo-link'
 import { HttpLink } from 'apollo-link-http'

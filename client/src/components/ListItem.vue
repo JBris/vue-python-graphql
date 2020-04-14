@@ -1,6 +1,6 @@
 <template>
   <div class="column is-4">
-    <CollapsibleCard :title="`${repo.repo}/${repo.author}`" id="`repo-item-${repo.id}`">
+    <CollapsibleCard :title="`${repo.author}/${repo.repo}`" id="`repo-item-${repo.id}`">
         <div class="panel-body">
             <p>{{ repo.htmlUrl }}</p>
             <p>{{ repo.description }}</p>
