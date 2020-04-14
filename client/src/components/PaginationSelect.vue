@@ -1,5 +1,5 @@
 <template>
-    <div class="pagination-list select is-primary is-rounded is-normal">
+    <div class="select is-primary is-normal">
         <select v-model="size" @change="changeSearchPagination($event)" >
           <option disabled value="">Results per page...</option>
           <option v-for="item in items" v-bind:key="item" v-bind:value="item">

@@ -1,5 +1,5 @@
 <template>
-    <div class="provider-list select is-primary is-rounded is-normal">
+    <div class="select is-primary is-normal">
         <select v-model="provider" @change="changeProvider()">
           <option disabled value="">Select platform...</option>
           <option v-for="provider in providers" v-bind:key="provider.value" v-bind:value="provider.value">
