@@ -28,8 +28,7 @@ class GitLab(IGitPlugin):
             raise GraphQLError("Error: Response code: ", (res.status), " - Message: " + res_body['message'])
         else:
             git_collection = { "items": [] }
-            i = 0
-            for item in res_body:
+            for i, item in enumerate(res_body):
                 search_result=OrderedDict()
                 search_result['id'] = i
                 search_result['repo'] = item['name']
@@ -40,6 +39,5 @@ class GitLab(IGitPlugin):
                 search_result['tagsUrl'] = "https://gitlab.com/api/v4/projects/" + str(item['id']) + "/repository/tags"
                 search_result['cloneUrl'] = item['http_url_to_repo']
                 git_collection['items'].append(search_result)
-                i += 1
                 
             return git_collection

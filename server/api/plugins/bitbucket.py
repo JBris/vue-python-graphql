@@ -53,8 +53,7 @@ class Bitbucket(IGitPlugin):
         responses = await asyncio.gather(*tasks, return_exceptions=True)
         self.session.close()
 
-        i = 0
-        for res in responses:        
+        for i, res in enumerate(responses):        
             res_body = await res.json()
             if res.status != 200:
                 raise GraphQLError("Error: Response code: ", (res.status), " - Message: " + res_body['error']['message'])
@@ -70,6 +69,5 @@ class Bitbucket(IGitPlugin):
                 search_result['tagsUrl'] = res_body['links']['tags']['href']
                 search_result['cloneUrl'] = res_body['links']['clone'][0]['href']
                 git_collection['items'].append(search_result)
-                i += 1
 
         return git_collection
