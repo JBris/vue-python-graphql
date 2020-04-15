@@ -1,4 +1,4 @@
-# vue-aiohttp-graphql
+# vue-python-graphql
 
 ## Table of Contents  
 
@@ -13,7 +13,7 @@ This will pull all required Docker images and build your containers.
 
 ## Server
 
-An asynchronous GraphQL server written in Python. Searches for git repos hosted on GitHub, Bitbucket, and GitLab.  
+An asynchronous GraphQL server written in Python. Uses Graphene, Yapsy, and aiohttp. Searches for git repos hosted on GitHub, Bitbucket, and GitLab.  
 
 Visit $PYTHON_HOST/graphiql to access GraphQL Explorer.
 
