@@ -1,4 +1,4 @@
-aiohttp==3.6.2
+aiohttp==3.7.4
 aiohttp-cors==0.7.0       
 aiohttp-graphql==1.1.0    
 aniso8601==7.0.0
